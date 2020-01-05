@@ -20,6 +20,11 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # Ao usar o Docker é preciso definir o host como o service criado no docker-compose
+  # e o user é o definido na imagem utilizada (postgres:9.5)
+  host: db
+  user: postgres
+  password:
 
 development:
   <<: *default
