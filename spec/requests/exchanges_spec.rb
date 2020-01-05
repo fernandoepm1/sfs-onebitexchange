@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ExchangesController, type: :request do
   describe 'GET exchanges#index' do
     it 'returns HTTP success' do
-      get exchanges_index_path #=> '/exchanges/index'
+      get root_path #=> '/'
 
       expect(response).to have_http_status(200)
     end
@@ -15,7 +15,7 @@ RSpec.describe ExchangesController, type: :request do
     end
 
     it 'returns HTTP success' do
-      get exchanges_convert_path, #=> '/exchanges/convert'
+      get convert_path, #=> '/convert'
         params: {
           source_currency: 'USD',
           target_currency: 'BRL',
