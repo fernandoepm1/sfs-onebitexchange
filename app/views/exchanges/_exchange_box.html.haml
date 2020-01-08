@@ -1,11 +1,11 @@
-.exchange_box.col-sm-12
-  .card
-    .card-header.text-center
-      Currency conversion
+.card#exchange_box
+  .card-header.text-center
+    Type the desired amount
 
-    .card-block
-      = form_tag('/convert', method: :get, id: 'exchange_form') do
-        .source_currency
+  .card-block
+    = form_tag('/convert', method: :get, id: 'exchange_form') do
+      .row
+        #source_currency.col-md-4.offset-md-1
           .form-group
             %p.title Source
             = select_tag 'source_currency', options_for_select(currency_list, 'USD'), class: 'form-control', id: 'source_currency'
@@ -13,7 +13,9 @@
           .form-group
             %input.form-control(type='number' name='amount' id='amount' placeholder='Amount' step='any' required)
 
-        .target_currency
+        #equals.col-md-2 =
+
+        #target_currency.col-md-4
           .form-group
             %p.title Target
             = select_tag 'target_currency', options_for_select(currency_list, 'BRL'), class: 'form-control', id: 'target_currency'
