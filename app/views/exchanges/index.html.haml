@@ -1,0 +1,12 @@
+.container
+  .row
+    .col-md-6.offset-md-3
+      .row
+        #logo.col-md-6.offset-md-3.text-sm-center
+          = image_tag '/logo.png', class: 'img-fluid'
+
+      .row
+        = render 'exchange_box'
+
+      .row
+        #description Super easy currency converter
