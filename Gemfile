@@ -19,6 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'rubocop', '~> 0.78.0', require: false
 gem 'rest-client'
 gem 'webmock'
+gem 'haml'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
