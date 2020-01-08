@@ -9,6 +9,17 @@
     color: #fff;
     font-weight: 700;
     font-family: 'Varela Round', sans-serif;
+    position: relative;
+
+    #swap {
+      cursor: pointer;
+    }
+
+    #swap_icon {
+      position: absolute;
+      margin-right: 5%;
+      right: 0;
+    }
   }
 
   .card-block {

@@ -22,7 +22,7 @@ class ExchangeService
       value = JSON.parse(response.body)['currency'][0]['value'].to_f
 
       # Valor da moeda origem (@amount) * valor da cotação (value) = valor da moeda destino (result)
-      result = @amount * value
+      result = (@amount * value).round(2)
     rescue RestClient::ExceptionWithResponse => exception
       exception.response
     end
