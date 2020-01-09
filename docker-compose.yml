@@ -16,8 +16,6 @@ services:
       - gems:/gems
     depends_on:
       - db
-    stdin_open: true
-    tty: true
 
 volumes:
   postgres:
