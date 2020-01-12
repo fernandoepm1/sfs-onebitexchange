@@ -17,6 +17,23 @@ RSpec.configure do |config|
               "type": "original"
             }
           ]
-        }', headers: {})
+        }',
+        headers: {})
+
+    stub_request(:get, /rest.coinapi.io/)
+      .with(headers: {
+        'Accept'=>'*/*',
+        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'Host'=>'rest.coinapi.io'
+      }).to_return(
+        status: 200,
+        body: '
+        {
+          "time": "2020-01-12T01:47:07.9574812Z",
+          "asset_id_base": "BTC",
+          "asset_id_quote": "BRL",
+          "rate": 33049.276301273544612737571396
+        }',
+        headers: {})
   end
 end
