@@ -2,5 +2,6 @@
 
 Rails.application.routes.draw do
   root 'exchanges#index'
-  get '/convert', to: 'exchanges#convert'
+  get '/convert_currency',       to: 'exchanges#convert_currency'
+  get '/convert_cryptocurrency', to: 'exchanges#convert_cryptocurrency'
 end
