@@ -21,7 +21,7 @@ module MoneyManager
 
         # Valor da moeda origem (@amount) * valor da cotação (value) = valor da moeda destino (result)
         result = @amount * value
-        '%.2f' % result
+        ('%.2f' % result).to_f
       rescue RestClient::ExceptionWithResponse => exception
         exception.response
       end
