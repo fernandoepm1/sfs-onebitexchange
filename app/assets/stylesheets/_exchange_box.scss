@@ -10,6 +10,23 @@
     font-weight: 700;
     font-family: 'Varela Round', sans-serif;
     position: relative;
+    padding-top: 20px;
+
+    .switch {
+      margin-top: 10px !important;
+    }
+
+    #dollar-sign, #bitcoin {
+      position: absolute;
+      font-size: 22px;
+      left: 20px;
+    }
+
+    #bitcoin {
+      position: absolute;
+      font-size: 22px;
+      left: 100px;
+    }
 
     #swap {
       cursor: pointer;
@@ -17,7 +34,7 @@
 
     #swap_icon {
       position: absolute;
-      margin-right: 5%;
+      margin-right: 10%;
       right: 0;
     }
   }
@@ -32,11 +49,13 @@
       font-weight: 700;
     }
 
-    #equals {
+    #arrows {
       text-align: center;
-      font-size: 60px;
-      margin-top: 5%;
-      font-weight: 200;
+      margin-top: 10%;
+
+      #arrows_icon {
+        font-size: 40px;
+      }
     }
   }
 }
@@ -54,11 +73,13 @@
   .form-group {
     select {
       font-size: 20px;
+      font-family: 'Varela Round', sans-serif;
       height: 50px !important;
     }
 
     input {
       font-size: 20px;
+      font-family: 'Varela Round', sans-serif;
       height: 50px;
     }
   }

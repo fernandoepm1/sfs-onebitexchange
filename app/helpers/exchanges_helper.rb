@@ -7,4 +7,13 @@ module ExchangesHelper
       'SGD', 'THB', 'TRY', 'USD', 'ZAR'
     ]
   end
+
+  def cryptocurrency_list
+    ['ETH', 'XRP', 'BTC', 'DOGE', 'XMR', 'LTC', 'USDT', 'XLM']
+  end
 end
+
+# [
+#   'ETH - Ethereum', 'XRP - Ripple', 'BTC - Bitcoin', 'DOGE - Dogecoin', 'XMR - Monero',
+#   'LTC - Litecoin', 'USDT - Tether', 'XLM - Stellar'
+# ]
