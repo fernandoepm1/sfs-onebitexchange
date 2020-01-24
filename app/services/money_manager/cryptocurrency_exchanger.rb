@@ -21,7 +21,6 @@ module MoneyManager
 
         rate = JSON.parse(response)['rate']
         result = @amount * rate
-        ('%.5f' % result).to_f
       rescue RestClient::ExceptionWithResponse => exception
         exception.response
       end

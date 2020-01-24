@@ -3,10 +3,12 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
+  $('#amount').autoNumeric('init', {
+    'vMin': 0.00,
+    'vMax': 999999999.99,
+    'aSign': '$ '
+  })
   $('#amount').focus()
-
-  $('#amount').on 'input', ->
-    validateDecimals(this)
 
   $('input[type="checkbox"]').on 'change', ->
     if $(this).is(':checked')
@@ -23,17 +25,17 @@ $(document).ready ->
   $('#swap').on 'click', ->
     swapValues()
 
-populateSelect = (checkboxState) ->
+populateSelect = (useCrypto) ->
   sourceSelect = $('#source_currency')
   targetSelect = $('#target_currency')
   amount = $('#amount')
 
-  if checkboxState
+  if useCrypto
     currencyList =
       [
         'ETH', 'XRP', 'BTC', 'DOGE', 'XMR', 'LTC', 'USDT', 'XLM',
         'USD', 'BRL', 'EUR'
-      ]
+      ].sort()
     sourceSelected = 'BTC'
     targetSelected = 'BRL'
   else
@@ -43,14 +45,14 @@ populateSelect = (checkboxState) ->
         'GBP', 'HKD', 'HRK', 'HUF', 'IDR', 'ILS', 'INR', 'JPY', 'KRW',
         'MXN', 'MYR', 'NOK', 'NZD', 'PHP', 'PLN', 'RON', 'RUB', 'SEK',
         'SGD', 'THB', 'TRY', 'USD', 'ZAR'
-      ]
+      ].sort()
     sourceSelected = 'USD'
     targetSelected = 'BRL'
 
   sourceSelect.empty()
   targetSelect.empty()
   $('#amount').val('')
-  $('#result').val('')
+  $('#result').autoNumeric('destroy')
 
   newList = ''
   for currency in currencyList
@@ -61,10 +63,6 @@ populateSelect = (checkboxState) ->
   targetSelect.html(newList)
   targetSelect.val(targetSelected)
   $('#amount').focus()
-
-validateDecimals = (e) ->
-  t = e.value
-  e.value = if (t.indexOf(".") >= 0) then (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."), 3)) else t
 
 swapValues = ->
   source_currency = $('#source_currency').val()
@@ -90,12 +88,15 @@ getCurrencyExchanges = ->
       data: {
         source_currency: $('#source_currency').val(),
         target_currency: $('#target_currency').val(),
-        amount: $('#amount').val()
+        amount: $('#amount').autoNumeric('get')
       }
       error: (jqXHR, textStatus, errorThrown) ->
         alert textStatus
       success: (data, text, jqXHR) ->
-        $('#result').val(data.value)
+        $('#result').autoNumeric('init', {
+          'aSign': '$ '
+        })
+        $('#result').autoNumeric('set', data.result)
     return false;
 
 getCryptocurrencyExchanges = ->
@@ -106,10 +107,13 @@ getCryptocurrencyExchanges = ->
       data: {
         source_crypto: $('#source_currency').val(),
         target_crypto: $('#target_currency').val(),
-        amount: $('#amount').val()
+        amount: $('#amount').autoNumeric('get')
       }
       error: (jqXHR, textStatus, errorThrown) ->
         alert textStatus
       success: (data, text, jqXHR) ->
-        $('#result').val(data.value)
+        $('#result').autoNumeric('init', {
+          'aSign': '$ '
+        })
+        $('#result').autoNumeric('set', data.result)
     return false
