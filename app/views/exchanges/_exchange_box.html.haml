@@ -27,7 +27,7 @@
             = select_tag 'source_currency', options_for_select(currency_list, 'USD'), class: 'form-control', id: 'source_currency'
 
           .form-group
-            %input.form-control(type="number" name="amount" id="amount" placeholder="Amount" step="any")
+            %input.form-control(type="text" id="amount" placeholder="Amount" step="any")
 
         #arrows.col-md-2
           %i#arrows_icon.material-icons compare_arrows
@@ -38,4 +38,4 @@
             = select_tag 'target_currency', options_for_select(currency_list, 'BRL'), class: 'form-control', id: 'target_currency'
 
           .form-group
-            %input.form-control(type="number" name="result" id="result" placeholder="Result" readonly)
+            %input.form-control(type="text" id="result" placeholder="Result" readonly)

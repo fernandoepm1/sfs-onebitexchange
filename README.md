@@ -1,27 +1,24 @@
 # OneBitExchange
-Convert monetary values from around the world.
 
-## To fill out later
+Convert monetary values from around the world, now with cryptocurrencies.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Running the app
 
-Things you may want to cover:
+To run the app locally you need to have [Docker](https://docs.docker.com/install/) installed, and follow these steps:
 
-* Ruby version
+1. Clone the project using
+```git
+git clone git@github.com:fernandoepm1/sfs-onebitexchange.git
+```
 
-* System dependencies
+2. Run docker-compose.yml file with
+```
+docker-compose up --build
+```
 
-* Configuration
+3. Create the database with
+```
+docker run --rm app bundle exec rake db:create
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+4. Acess the app in http://localhost:3000
